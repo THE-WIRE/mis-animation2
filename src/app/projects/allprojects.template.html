@@ -1,0 +1,11 @@
+<div class="row">
+    <div *ngFor="let project of projectMenu" (click)="setProject(project)" class="well hoverwell thumbnail">
+        <h2>{{project.long.name}}</h2>
+        <div>Date: {{project.date.crDate | date}}</div>
+
+        <div>
+            <span>Additional details: None</span>
+            <span class="pad-left">Status: {{ project.status }}</span>
+        </div>
+    </div>
+</div>

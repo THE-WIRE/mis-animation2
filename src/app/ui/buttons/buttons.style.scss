@@ -1,0 +1,31 @@
+@import "../../../../node_modules/ng2-datetime/src/vendor/bootstrap-datepicker/bootstrap-datepicker3.min";
+@import "../../../../node_modules/ng2-datetime/src/vendor/bootstrap-timepicker/bootstrap-timepicker.min";
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+@import "../../scss/select2-variables";
+@import "../../../../node_modules/select2/src/scss/core";
+@import "../../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
+
+.widget > header h4 {
+  font-size: 14px;
+}
+
+.dropdown-toggle {
+  padding-left: 10px;
+
+  &:after {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.segmented-dropdowns {
+  .btn-group {
+    display: inline-flex !important;
+    > .btn {
+
+    }
+  }
+}

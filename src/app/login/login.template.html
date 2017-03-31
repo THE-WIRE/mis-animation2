@@ -1,0 +1,43 @@
+<div class="single-widget-container">
+    <section widget class="widget login-widget">
+        <header class="text-center">
+            <h4>Login to your account</h4>
+        </header>
+        <div class="widget-body">
+            <div *ngIf="!!showMessage">
+                <span>Getting your dashboard ready...</span>
+            </div>
+            <hr>
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" class="no-margin">
+                <fieldset class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </span>
+                            <input (ngModel)="email" name="email" id="email" type="email" class="form-control input-lg input-transparent" placeholder="Your Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                <i class="fa fa-lock"></i>
+              </span>
+                            <input (ngModel)="password" name="password" id="password" type="password" class="form-control input-lg input-transparent" placeholder="Your Password">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-lg btn-block btn-danger">
+            <span class="small-circle"><i class="fa fa-caret-right"></i></span>
+            <small>Sign In</small>
+          </button>
+                    <a class="forgot" href="#">Forgot Username or Password?</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

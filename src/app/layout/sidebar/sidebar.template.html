@@ -1,0 +1,62 @@
+<ul [ngClass]="{'hide': isHidden}" id="side-nav-spin" align="center" class="side-nav">
+    <span><i class="fa fa-circle-o-notch fa-spin"></i></span>
+</ul>
+
+<ul [ngClass]="{'show': isHidden}" id="side-nav" class="side-nav">
+    <li *ngFor="let m of menu" [routerLinkActive]="['active']">
+        <a (click)="sidebarBehavior($event)" *ngIf="!!m?.child" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#{{m?.name | lowercase}}-collapse" aria-expanded="false">
+            <i class="fa {{m?.icon}}"></i><span class="name">{{m?.name}}</span></a>
+        <a (click)="sidebarBehavior($event)" *ngIf="!m?.child" data-parent="#side-nav" href="#" routerLink="{{m?.url}}">
+            <i class="fa {{m?.icon}}"></i><span class="name">{{m?.name}}</span>
+        </a>
+
+        <ul *ngIf="!!m?.child" id="{{m?.name | lowercase}}-collapse" class="panel-collapse collapse" aria-expanded="false">
+            <li *ngFor="let n of m?.child" [routerLinkActive]="['active']"><a routerLink="{{n.url}}"><span class="name">{{n?.name}}</span></a></li>
+        </ul>
+    </li>
+</ul>
+
+<h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
+<!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
+<ul class="sidebar-labels">
+    <li>
+        <a href="#">
+            <!-- yep, .circle again -->
+            <i class="fa fa-circle text-warning"></i>
+            <span class="label-name">My Recent</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fa fa-circle text-gray"></i>
+            <span class="label-name">Starred</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fa fa-circle text-danger"></i>
+            <span class="label-name">Background</span>
+        </a>
+    </li>
+</ul>
+
+<h5 class="sidebar-nav-title">Projects</h5>
+<!-- A place for sidebar notifications & alerts -->
+<div class="sidebar-alerts">
+    <div class="alert fade show">
+        <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+        <span class="text-white fw-semi-bold">Sales Report</span> <br>
+        <div class="progress progress-xs bg-blue-light mt-xs mb-0">
+            <div class="progress-bar progress-xs" role="progressbar" style="width: 16%" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small>Calculating x-axis bias... 65%</small>
+    </div>
+    <div class="alert fade show">
+        <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+        <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
+        <div class="progress progress-xs bg-blue-light mt-xs mb-0">
+            <div class="progress-bar progress-xs bg-danger" role="progressbar" style="width: 23%" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small>Provide required notes</small>
+    </div>
+</div>
