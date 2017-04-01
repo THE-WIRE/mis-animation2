@@ -1,6 +1,6 @@
 import { globalVars } from '../../shared/global.service';
 import { Router } from '@angular/router';
-import { Component, Output, EventEmitter, Renderer, ElementRef } from '@angular/core';
+import {Component, Output, EventEmitter, Renderer, ElementRef, Input} from '@angular/core';
 import { AngularFire } from 'angularfire2'
 
 @Component({

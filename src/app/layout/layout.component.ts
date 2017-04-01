@@ -1,5 +1,5 @@
 import { Dashboard } from '../dashboard/dashboard.component';
-import { Component, Directive, ElementRef, NgZone, Renderer, ViewChild, ViewEncapsulation } from '@angular/core';
+import {Component, Directive, ElementRef, NgZone, Renderer, ViewChild, ViewEncapsulation, Output} from '@angular/core';
 import {
   Router,
   Event as RouterEvent,
@@ -22,6 +22,7 @@ export class Layout {
   sidebarState: boolean = true;
   @ViewChild('spinnerElement') spinnerElement: ElementRef;
   @ViewChild('routerComponent') routerComponent: ElementRef;
+  public varsx:Project
 
   constructor(
     private el: ElementRef,
@@ -34,13 +35,9 @@ export class Layout {
       setTimeout(() => {
         this._navigationInterceptor(event);
       });
-      console.log("layout2", this.vars);
+      this.varsx = this.vars;
 
     });
-
-    this.vars.getVars().subscribe(data => {
-      console.log("layout", data);
-    })
 
     this.af.auth.subscribe(user => {
       if (!user) {

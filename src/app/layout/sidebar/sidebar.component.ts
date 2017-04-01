@@ -1,10 +1,11 @@
 import { Project } from '../../interfaces/project.model';
 import { Observable } from 'rxjs/Rx';
 import { globalVars } from '../../shared/global.service';
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, SimpleChange } from '@angular/core';
 import { Renderer } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { Dashboard } from '../../dashboard/dashboard.component'
+import {Router, Event as RouterEvent } from "@angular/router";
 
 declare let jQuery: any;
 
@@ -33,9 +34,12 @@ export class Sidebar {
   sidebarMenu: any = 0;
 
   @Input() menu: any
+  @Input() varsx: Project;
+
+
   private isHidden: boolean = false
 
-  constructor(private renderer: Renderer, private el: ElementRef, private af: AngularFire, public vars: globalVars) {
+  constructor(private renderer: Renderer, private el: ElementRef, private af: AngularFire, public vars: globalVars, public router:Router) {
 
     // this.af.auth.subscribe(user => {
     //   if (user) {
@@ -53,6 +57,14 @@ export class Sidebar {
     //     })
     //   }
     // })
+
+    router.events.subscribe((event: RouterEvent) => {
+      if(this.varsx != undefined){
+        this.getMenu(this.varsx.role)
+      }
+    })
+
+    console.log("sidebar", this.varsx);
 
     vars.getVars().subscribe(data => {
       console.log("New data", data)

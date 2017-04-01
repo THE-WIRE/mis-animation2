@@ -1,7 +1,7 @@
 <ul [ngClass]="{'hide': isHidden}" id="side-nav-spin" align="center" class="side-nav">
     <span><i class="fa fa-circle-o-notch fa-spin"></i></span>
 </ul>
-
+<div>{{ varsx?.role }}</div>
 <ul [ngClass]="{'show': isHidden}" id="side-nav" class="side-nav">
     <li *ngFor="let m of menu" [routerLinkActive]="['active']">
         <a (click)="sidebarBehavior($event)" *ngIf="!!m?.child" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#{{m?.name | lowercase}}-collapse" aria-expanded="false">

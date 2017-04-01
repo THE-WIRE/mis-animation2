@@ -94,8 +94,6 @@ export class Dashboard {
     maxSpotColor: false
   };
 
-  @Output() varsx = new EventEmitter();
-
   constructor(public vars: globalVars, public router: Router) {
     for (let i = 0; i < this.tableSparklineValues.length; i++) {
       this.tableSparklineValues[i] = [
